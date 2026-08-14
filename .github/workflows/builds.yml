@@ -3,9 +3,6 @@ name: builds
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-      - pr/*
 
 permissions:
   actions: read
