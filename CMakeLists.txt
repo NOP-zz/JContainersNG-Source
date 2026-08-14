@@ -72,14 +72,3 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     nlohmann_json::nlohmann_json
     lua_static
 )
-
-set(OUTPUT_FOLDER "H:/Mayhem's Madness AE/mods/JContainersNG")
-set(DLL_FOLDER "${OUTPUT_FOLDER}/SKSE/Plugins")
-
-add_custom_command(
-    TARGET ${PROJECT_NAME}
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${DLL_FOLDER}
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${PROJECT_NAME}> ${DLL_FOLDER}/${PROJECT_NAME}.dll
-    VERBATIM
-)
