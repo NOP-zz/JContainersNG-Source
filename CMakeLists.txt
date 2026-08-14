@@ -73,3 +73,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     nlohmann_json::nlohmann_json
     lua_static
 )
+
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION "SKSE/Plugins"
+)
