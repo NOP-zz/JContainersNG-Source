@@ -39,12 +39,14 @@ jobs:
           VCPKG_FEATURE_FLAGS: "binarycaching"
           VCPKG_BINARY_SOURCES: "clear;files,${{ steps.vcpkg-cache.outputs.path }},readwrite"
         run: |
-          cmake --preset build-${{ matrix.preset }} && cmake --build --preset ${{ matrix.preset }}
+          cmake --preset ${{ matrix.preset }} && \
+          cmake --build --preset ${{ matrix.preset }} && \
+          cmake --install build/${{ matrix.preset }}
 
       - name: Create artifact
         uses: actions/upload-artifact@v4
         with:
           name: "build-${{ matrix.preset }}"
-          path: "${{ github.workspace }}/build/${{ matrix.preset }}"
+          path: "${{ github.workspace }}/install/${{ matrix.preset }}/"
           if-no-files-found: error
           overwrite: true

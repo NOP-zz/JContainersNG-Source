@@ -4,7 +4,8 @@ cmake_minimum_required(VERSION 3.21)
 # (AP's gate: GetPluginVersion("JContainers64"/"JContainersGOG"/"JContainersVR"), passes on ANY match)
 # "JContainers64" covers SE + GOG since GOG runs the same scripts, but VR mods
 # may specifically want "JContainersVR", so we name it right per-build
-if(VCPKG_TARGET_TRIPLET MATCHES "sksevr")
+option(BUILD_VR "Build for VR" OFF)
+if(BUILD_VR)
     project(JContainersVR VERSION 2.0.0 LANGUAGES CXX)
 else()
     project(JContainers64 VERSION 2.0.0 LANGUAGES CXX)
